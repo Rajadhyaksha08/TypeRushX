@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useAuth } from '../context/AuthContext';
 import { useNavigate } from 'react-router-dom';
-
+import { apiFetch } from '../utils/api';
 const Dashboard = () => {
   const { user } = useAuth();
   const navigate = useNavigate();
@@ -14,7 +14,7 @@ const Dashboard = () => {
       try {
         const token = localStorage.getItem('token');
 
-        const response = await fetch('/api/results/my', {
+        const response = await apiFetch('/api/results/my', {
           headers: {
             Authorization: `Bearer ${token}`,
           },

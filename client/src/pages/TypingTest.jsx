@@ -1,4 +1,5 @@
 import { useState, useEffect, useCallback, useRef } from 'react';
+import { apiFetch } from '../utils/api';
 import { useSearchParams } from 'react-router-dom';
 import passages from '../data/passages';
 import { useAuth } from '../context/AuthContext';
@@ -36,7 +37,7 @@ useEffect(() => {
 
   const fetchDailyChallenge = async () => {
     try {
-      const response = await fetch('/api/daily-challenge', {
+      const response = await apiFetch('/api/daily-challenge', {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -97,7 +98,7 @@ const saveTestResult = useCallback(async () => {
   setSaveError('');
 
   try {
-    const response = await fetch('/api/results', {
+    const response = await apiFetch('/api/results', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -154,7 +155,7 @@ const completeDailyChallenge = useCallback(async () => {
   }
 
   try {
-    const response = await fetch('/api/daily-challenge/complete', {
+    const response = await apiFetch('/api/daily-challenge/complete', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

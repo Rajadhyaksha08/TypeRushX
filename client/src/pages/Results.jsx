@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useState } from 'react';
+import { apiFetch } from '../utils/api';
 import {
   LineChart,
   Line,
@@ -74,7 +75,7 @@ function Results() {
         setLoading(true);
         setError('');
 
-        const response = await fetch('/api/results/my', {
+        const response = await apiFetch('/api/results/my', {
           headers: {
             Authorization: `Bearer ${token}`
           }

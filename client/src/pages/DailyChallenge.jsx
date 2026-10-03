@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useAuth } from '../context/AuthContext';
-
+import { apiFetch } from '../utils/api';
 function DailyChallenge() {
   const { token } = useAuth();
 
@@ -11,7 +11,7 @@ function DailyChallenge() {
   useEffect(() => {
     const fetchChallenge = async () => {
       try {
-        const response = await fetch('/api/daily-challenge', {
+        const response = await apiFetch('/api/daily-challenge', {
           headers: {
             Authorization: `Bearer ${token}`
           }
